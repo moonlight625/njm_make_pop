@@ -6,7 +6,7 @@
 ## 構成の要点
 
 - 完全静的サイト（バニラ HTML / CSS / JS、ES modules）。サーバー処理なし
-- ホスティング: GitHub Pages、`pop.mnlight.dev`（CNAME 済み）。shift-tool / pc-tool と同じ運用
+- ホスティング: GitHub Pages、`make-pop.mnlight.dev`（CNAME 済み）。shift-tool / pc-tool と同じ運用
 - 状態は localStorage（`pop.state` / `pop.layouts`）、端末ローカルフォントは IndexedDB（`pop-fonts`）、台紙画像は IndexedDB（`pop-backgrounds`）
 - 印刷はブラウザ標準（`window.print()`）。`@page size` を `#page-style` に JS で動的生成
 

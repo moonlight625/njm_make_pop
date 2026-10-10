@@ -4,7 +4,7 @@
 カテゴリ・型番・税別価格・コメントを入力すると、選んだレイアウト（用紙・台紙・項目の位置）で用紙プレビューが出て、そのまま印刷 / PDF保存できる。税込価格は自動計算。
 
 - サーバー不要の静的サイト（バニラ HTML / CSS / JS）。入力内容はブラウザ内（localStorage）にのみ保存され、どこにも送信されない
-- 公開URL: https://pop.mnlight.dev （GitHub Pages）
+- 公開URL: https://make-pop.mnlight.dev （GitHub Pages）
 
 ## 使い方
 
