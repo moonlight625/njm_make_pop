@@ -1,0 +1,684 @@
+[
+  {
+    "id": "a4p-taisei",
+    "name": "他店対抗 A4縦",
+    "paper": "A4",
+    "orientation": "portrait",
+    "cols": 1,
+    "rows": 1,
+    "marginMm": 0,
+    "gapMm": 0,
+    "cutLines": false,
+    "background": {
+      "id": null,
+      "url": "data/bg/taisei.png",
+      "name": "taisei.png",
+      "fit": "fill"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 7.9,
+        "y": 44.0,
+        "w": 40.0,
+        "h": 5.8
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 49.0,
+        "y": 44.0,
+        "w": 43.1,
+        "h": 5.8
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 44.9,
+        "y": 52.0,
+        "w": 47.2,
+        "h": 4.5
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 7.9,
+        "y": 58.0,
+        "w": 84.2,
+        "h": 28.0
+      },
+      "priceTax": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 54.1,
+        "y": 91.0,
+        "w": 35.0,
+        "h": 4.5
+      }
+    }
+  },
+  {
+    "id": "a4p-taisei-sample",
+    "name": "他店対抗 A4縦（簡易サンプル台紙）",
+    "paper": "A4",
+    "orientation": "portrait",
+    "cols": 1,
+    "rows": 1,
+    "marginMm": 0,
+    "gapMm": 0,
+    "cutLines": false,
+    "background": {
+      "id": null,
+      "url": "data/bg/taisei-sample.png",
+      "name": "taisei-sample.png",
+      "fit": "fill"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 6.2,
+        "y": 47.5,
+        "w": 41.4,
+        "h": 5.4
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 48.6,
+        "y": 47.5,
+        "w": 44.8,
+        "h": 5.4
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 47.6,
+        "y": 53.9,
+        "w": 45.7,
+        "h": 4.7
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 6.2,
+        "y": 59.9,
+        "w": 87.1,
+        "h": 20.9
+      },
+      "priceTax": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 34.3,
+        "y": 89.2,
+        "w": 44.3,
+        "h": 5.1
+      }
+    }
+  },
+  {
+    "id": "a4p-1",
+    "name": "A4縦 1件",
+    "paper": "A4",
+    "orientation": "portrait",
+    "cols": 1,
+    "rows": 1,
+    "marginMm": 15,
+    "gapMm": 0,
+    "cutLines": false,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "a4l-1",
+    "name": "A4横 1件",
+    "paper": "A4",
+    "orientation": "landscape",
+    "cols": 1,
+    "rows": 1,
+    "marginMm": 15,
+    "gapMm": 0,
+    "cutLines": false,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "a4p-2",
+    "name": "A4縦 2件（上下）",
+    "paper": "A4",
+    "orientation": "portrait",
+    "cols": 1,
+    "rows": 2,
+    "marginMm": 10,
+    "gapMm": 8,
+    "cutLines": true,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "a4l-2",
+    "name": "A4横 2件（左右）",
+    "paper": "A4",
+    "orientation": "landscape",
+    "cols": 2,
+    "rows": 1,
+    "marginMm": 10,
+    "gapMm": 8,
+    "cutLines": true,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "a4p-4",
+    "name": "A4縦 4件（2×2）",
+    "paper": "A4",
+    "orientation": "portrait",
+    "cols": 2,
+    "rows": 2,
+    "marginMm": 10,
+    "gapMm": 6,
+    "cutLines": true,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "a4p-6",
+    "name": "A4縦 6件（2×3）",
+    "paper": "A4",
+    "orientation": "portrait",
+    "cols": 2,
+    "rows": 3,
+    "marginMm": 10,
+    "gapMm": 5,
+    "cutLines": true,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "a5l-1",
+    "name": "A5横 1件",
+    "paper": "A5",
+    "orientation": "landscape",
+    "cols": 1,
+    "rows": 1,
+    "marginMm": 10,
+    "gapMm": 0,
+    "cutLines": false,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  },
+  {
+    "id": "b5p-1",
+    "name": "B5縦 1件",
+    "paper": "B5",
+    "orientation": "portrait",
+    "cols": 1,
+    "rows": 1,
+    "marginMm": 12,
+    "gapMm": 0,
+    "cutLines": false,
+    "background": {
+      "id": null,
+      "name": "",
+      "fit": "contain"
+    },
+    "fields": {
+      "name": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 2,
+        "w": 46,
+        "h": 12
+      },
+      "model": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 50,
+        "y": 2,
+        "w": 48,
+        "h": 12
+      },
+      "comment": {
+        "enabled": true,
+        "align": "left",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 16,
+        "w": 96,
+        "h": 12
+      },
+      "price": {
+        "enabled": true,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "red",
+        "x": 2,
+        "y": 30,
+        "w": 96,
+        "h": 40
+      },
+      "priceTax": {
+        "enabled": false,
+        "align": "center",
+        "sizeScale": 1,
+        "color": "gray",
+        "x": 2,
+        "y": 74,
+        "w": 96,
+        "h": 12
+      }
+    }
+  }
+]

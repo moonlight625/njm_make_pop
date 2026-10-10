@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.DS_Store
+# 店の写真・台紙画像(会社ロゴ入り)は絶対にコミットしない
+*.HEIC
+*.heic
+*.HEIF
+*.heif
+private/

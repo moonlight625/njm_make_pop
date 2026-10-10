@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>なぞり書きPOP</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
+  <link rel="stylesheet" href="css/style.css?v=2.0">
+  <link rel="stylesheet" href="css/print.css?v=2.0">
+  <style id="page-style">@page { size: A4 portrait; margin: 0; }</style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>✍️ なぞり書きPOP</h1>
+    <span class="spacer"></span>
+    <div class="header-actions">
+      <button id="help-btn" class="btn btn-ghost">使い方</button>
+      <button id="print-btn" class="btn btn-primary">🖨 印刷 / PDF</button>
+    </div>
+  </header>
+
+  <div id="error-box" class="banner banner-error" hidden style="margin: 12px 16px 0"></div>
+
+  <main class="app">
+    <aside class="panel">
+
+      <!-- 商品リスト -->
+      <section class="card">
+        <h2>商品リスト</h2>
+        <div class="items-head"><span>カテゴリ</span><span>型番</span><span>税別価格</span><span>枚数</span><span></span></div>
+        <div id="items-list" class="items"></div>
+        <div class="row-actions">
+          <button id="add-row" class="btn">＋ 行を追加</button>
+          <button id="paste-btn" class="btn">📋 スプレッドシートから貼り付け</button>
+          <button id="clear-rows" class="btn btn-ghost btn-danger">全部消す</button>
+        </div>
+        <p class="note">税込価格は税別から自動計算されます。</p>
+        <div class="hint-box">
+          <strong>コメントや価格の位置・大きさを変えたいとき</strong><br>
+          プレビュー上の枠をドラッグで動かせます（右下をつまむと大きさ変更）。数値で合わせたい場合は「レイアウト（台紙と配置）」→「レイアウトを編集」の「項目の位置」で。
+          <div class="row-actions" style="margin-top:6px"><button id="adjust-layout-btn" class="btn btn-sm">項目の位置・大きさを調整する</button></div>
+        </div>
+      </section>
+
+      <!-- 見た目 -->
+      <section class="card">
+        <h2>見た目</h2>
+        <label class="field">
+          <span>フォント</span>
+          <select id="font-select"></select>
+        </label>
+        <div id="font-sample" class="font-sample"></div>
+        <div class="row-actions" style="margin-top:0">
+          <button id="font-compare-btn" class="btn btn-sm">全フォントを見比べる</button>
+          <button id="font-add-btn" class="btn btn-sm btn-ghost">この端末にフォントを追加</button>
+          <button id="font-remove-btn" class="btn btn-sm btn-ghost btn-danger" hidden>このフォントを端末から削除</button>
+          <input type="file" id="font-file" accept=".ttf,.otf,.woff,.woff2" hidden>
+        </div>
+
+        <fieldset style="margin-top:14px">
+          <legend>なぞりガイドの見せ方</legend>
+          <div class="radio-group">
+            <label><input type="radio" name="guide" value="fill">薄く塗る</label>
+            <label><input type="radio" name="guide" value="outline">輪郭線だけ</label>
+          </div>
+        </fieldset>
+        <label class="field">
+          <span>薄さ（右ほど薄い）</span>
+          <input type="range" id="lightness" min="40" max="95" step="1">
+        </label>
+        <label class="field" id="stroke-row">
+          <span>輪郭線の太さ</span>
+          <input type="range" id="stroke" min="0.1" max="1.5" step="0.05">
+        </label>
+        <div class="field-row">
+          <fieldset style="flex:2 1 220px">
+            <legend>金額の表記</legend>
+            <div class="radio-group">
+              <label><input type="radio" name="priceStyle" value="yen">¥12,800</label>
+              <label><input type="radio" name="priceStyle" value="en">12,800円</label>
+              <label><input type="radio" name="priceStyle" value="none">12,800</label>
+            </div>
+          </fieldset>
+          <label class="field" style="flex:1 1 90px"><span>税率 %</span><input type="number" id="tax-rate" min="0" max="100" step="1"></label>
+        </div>
+      </section>
+
+      <!-- レイアウト -->
+      <section class="card">
+        <h2>レイアウト（台紙と配置）</h2>
+        <label class="field">
+          <span>使うレイアウト</span>
+          <select id="layout-select"></select>
+        </label>
+        <div class="row-actions" style="margin-top:0">
+          <button id="layout-dup" class="btn btn-sm">複製して自分用に</button>
+          <button id="layout-share" class="btn btn-sm">共有（URL / QR）</button>
+          <button id="pack-export" class="btn btn-sm">パックを保存</button>
+          <button id="pack-import" class="btn btn-sm btn-ghost">パックを取り込む</button>
+          <button id="layout-delete" class="btn btn-sm btn-ghost btn-danger">削除</button>
+          <input type="file" id="pack-file" accept=".json,application/json" hidden>
+        </div>
+
+        <details id="layout-editor" style="margin-top:12px">
+          <summary>レイアウトを編集</summary>
+          <p id="editor-locked-note" class="note banner" style="background:#fef3c7;color:#92400e" hidden>
+            組込みレイアウトは編集できません。「複製して自分用に」で自分のレイアウトを作ってから編集してください。
+          </p>
+          <div id="editor-form">
+            <label class="field"><span>名前</span><input type="text" data-path="name" maxlength="40"></label>
+
+            <p class="note" style="margin:0 0 6px"><strong>台紙（背景画像）</strong> — この端末のブラウザ内にだけ保存されます</p>
+            <div class="row-actions" style="margin-top:0;align-items:center">
+              <span id="bg-name" class="note" style="margin:0"></span>
+              <button id="bg-set" class="btn btn-sm">画像を選ぶ</button>
+              <button id="bg-remove" class="btn btn-sm btn-ghost btn-danger" hidden>台紙を外す</button>
+              <input type="file" id="bg-file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
+            </div>
+            <label class="field" id="bg-fit-row" style="margin-top:8px" hidden><span>台紙の合わせ方</span>
+              <select data-path="background.fit"><option value="contain">縦横比を保って収める</option><option value="fill">枠いっぱいに引き伸ばす</option></select>
+            </label>
+
+            <div class="field-row" style="margin-top:10px">
+              <label class="field"><span>用紙</span>
+                <select data-path="paper">
+                  <option value="A4">A4</option><option value="A5">A5</option><option value="A3">A3</option>
+                  <option value="B5">B5</option><option value="B4">B4</option>
+                  <option value="hagaki">ハガキ</option><option value="custom">カスタム寸法</option>
+                </select>
+              </label>
+              <label class="field"><span>向き</span>
+                <select data-path="orientation"><option value="portrait">縦</option><option value="landscape">横</option></select>
+              </label>
+            </div>
+            <div class="field-row" id="custom-size" hidden>
+              <label class="field"><span>幅 mm（縦向き時）</span><input type="number" data-path="widthMm" min="30" max="1000" step="1"></label>
+              <label class="field"><span>高さ mm（縦向き時）</span><input type="number" data-path="heightMm" min="30" max="1000" step="1"></label>
+            </div>
+            <div class="field-row">
+              <label class="field"><span>横に何件</span><input type="number" data-path="cols" min="1" max="10" step="1"></label>
+              <label class="field"><span>縦に何件</span><input type="number" data-path="rows" min="1" max="10" step="1"></label>
+              <label class="field"><span>外周の余白 mm</span><input type="number" data-path="marginMm" min="0" max="100" step="1"></label>
+              <label class="field"><span>件の間隔 mm</span><input type="number" data-path="gapMm" min="0" max="100" step="1"></label>
+            </div>
+            <label class="field" style="flex-direction:row;align-items:center;gap:8px">
+              <input type="checkbox" data-path="cutLines" style="width:20px;height:20px"> 切り取り線（破線）を印刷する
+            </label>
+
+            <p class="note" style="margin:6px 0"><strong>項目の位置</strong>（1件の枠に対する %。用紙の外にはみ出してもよく、印刷時は用紙外が切れます）。プレビュー上で<strong>ドラッグで移動、右下をつまんで大きさ変更</strong>もできます</p>
+            <div id="field-editor"></div>
+          </div>
+        </details>
+      </section>
+    </aside>
+
+    <!-- プレビュー -->
+    <section class="preview-area">
+      <div class="preview-head">
+        <span>プレビュー</span><span id="page-info"></span>
+        <span id="editing-hint" class="editing-hint" hidden>編集中: 枠をドラッグで移動 / 右下で大きさ変更</span>
+      </div>
+      <div id="preview"></div>
+    </section>
+  </main>
+
+  <!-- 貼り付け -->
+  <dialog id="paste-dialog">
+    <h3>スプレッドシートから貼り付け</h3>
+    <p class="note" style="margin:0 0 8px">Excel / Googleスプレッドシートで「カテゴリ・型番・税別価格・コメント（・枚数）」の列を選んでコピーし、ここに貼り付けてください。見出し行があっても大丈夫です。</p>
+    <textarea id="paste-text" placeholder="ノートPC	FMVU59L2BA	199800	さらにお値引!!
+..."></textarea>
+    <div class="dialog-actions">
+      <button class="btn" data-close>やめる</button>
+      <button id="paste-ok" class="btn btn-primary">行として追加</button>
+    </div>
+  </dialog>
+
+  <!-- 共有 -->
+  <dialog id="share-dialog">
+    <h3>レイアウトを共有</h3>
+    <p class="note" style="margin:0">スマホはQRを読み取り、PCはURLを開くと、そのレイアウトを取り込めます。</p>
+    <p id="share-bg-note" class="note banner" style="background:#fef3c7;color:#92400e" hidden>
+      このレイアウトには台紙画像が付いています。URL / QR には画像は含まれません。台紙ごと渡すには「パックを保存」したファイルを相手の端末で「パックを取り込む」してください。
+    </p>
+    <div id="qr-box" class="qr-box"></div>
+    <input type="text" id="share-url" class="share-url" readonly>
+    <div class="dialog-actions" style="justify-content:flex-start">
+      <button id="share-copy-url" class="btn btn-sm">URLをコピー</button>
+      <button id="share-copy-json" class="btn btn-sm btn-ghost">JSONをコピー（全端末の標準にする用）</button>
+    </div>
+    <details style="margin-top:8px"><summary style="font-weight:normal;font-size:.85rem;color:var(--muted)">JSONを表示</summary><pre id="share-json" class="json"></pre></details>
+    <div class="dialog-actions"><button class="btn" data-close>閉じる</button></div>
+  </dialog>
+
+  <!-- 取り込み確認 -->
+  <dialog id="import-dialog">
+    <h3>レイアウトを取り込みますか？</h3>
+    <p>共有されたレイアウト「<strong id="import-name"></strong>」をこの端末に保存します。</p>
+    <div class="dialog-actions">
+      <button class="btn" data-close>やめる</button>
+      <button id="import-ok" class="btn btn-primary">取り込む</button>
+    </div>
+  </dialog>
+
+  <!-- フォント比較 -->
+  <dialog id="compare-dialog">
+    <h3>フォントを見比べる</h3>
+    <p class="note" style="margin:0 0 8px">初回は各フォントの読み込みに少し時間がかかります。クリックで選択。</p>
+    <div id="font-list" class="font-list"></div>
+    <div class="dialog-actions"><button class="btn" data-close>閉じる</button></div>
+  </dialog>
+
+  <!-- 使い方 -->
+  <dialog id="help-dialog">
+    <h3>使い方</h3>
+    <div class="help-body">
+      <h4>基本の流れ</h4>
+      <ol>
+        <li>商品リストにカテゴリ・型番・税別価格・コメントを入れる（スプレッドシートからの貼り付けも可）</li>
+        <li>フォントと、なぞりガイドの薄さを決める</li>
+        <li>レイアウトを選ぶ（台紙に合わせたものが無ければ、下の「台紙に合わせる」を参照）</li>
+        <li>「印刷 / PDF」を押す</li>
+      </ol>
+      <h4>台紙（他店対抗の赤いヘッダーなど）に合わせる</h4>
+      <ol>
+        <li>台紙を画像（PNG / JPEG）にする。POP作成ソフトから PDF に出力して画像に変換するか、印刷したものをスキャン</li>
+        <li>「他店対抗 A4縦」を「複製して自分用に」→「レイアウトを編集」→「画像を選ぶ」で台紙を登録</li>
+        <li>プレビュー上で各項目の枠をドラッグして、台紙の書く場所に合わせる（右下をつまむと大きさ変更）</li>
+        <li>白紙に印刷すると台紙となぞりガイドが一度に出ます。台紙が印刷済みの用紙を使うなら、台紙を登録せず位置だけ合わせてその用紙に印刷</li>
+        <li>できたレイアウトは「パックを保存」→ 他の端末で「パックを取り込む」で共有（台紙画像ごと運べます）</li>
+      </ol>
+      <h4>PC（Chrome / Edge）で印刷するとき</h4>
+      <ul>
+        <li>印刷画面の「余白」は <strong>既定</strong> または <strong>なし</strong> にする（余白はレイアウト側で持っています）</li>
+        <li>用紙サイズはレイアウトに合わせて自動で選ばれます。カスタム寸法の場合はプリンタ側で合わせてください</li>
+        <li>薄すぎる／濃すぎるときは「薄さ」スライダーか、プリンタの濃度設定で調整</li>
+      </ul>
+      <h4>iPhone / iPad（Safari）でPDFにするとき</h4>
+      <ol>
+        <li>「印刷 / PDF」→ プリント画面が開く</li>
+        <li>プレビューの用紙を<strong>ピンチで拡大</strong>するとPDFとして開く</li>
+        <li>共有ボタン →「"ファイル"に保存」または店のPCへ送る</li>
+        <li>用紙サイズはプリント画面の「用紙サイズ」で合わせてください（自動で変わらないことがあります）</li>
+      </ol>
+      <h4>Android（Chrome）でPDFにするとき</h4>
+      <ol><li>「印刷 / PDF」→ プリンタの選択で「PDF形式で保存」</li></ol>
+      <h4>レイアウトを他の端末でも使う</h4>
+      <ul>
+        <li>台紙なし: 「共有（URL / QR）」で出たURLを他の端末で開くと取り込めます</li>
+        <li>台紙あり: 「パックを保存」したファイルを相手の端末で「パックを取り込む」</li>
+        <li>全端末の標準にしたいレイアウトは「JSONをコピー」して管理者に渡してください（台紙画像は含まれません）</li>
+      </ul>
+      <h4>データの保存について</h4>
+      <p class="note">入力内容・設定・自作レイアウト・台紙画像は<strong>この端末のブラウザ内</strong>にだけ保存されます。どこにも送信されません。</p>
+    </div>
+    <div class="dialog-actions"><button class="btn btn-primary" data-close>閉じる</button></div>
+  </dialog>
+
+  <script src="vendor/qrcode.min.js"></script>
+  <script type="module" src="js/main.js?v=2.0"></script>
+</body>
+</html>

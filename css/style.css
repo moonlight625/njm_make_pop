@@ -1,0 +1,240 @@
+/* なぞり書きPOP - 画面UI */
+:root {
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --line: #d1d5db;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --danger: #dc2626;
+  --radius: 10px;
+  --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--ui-font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+h1 { font-size: 1.2rem; margin: 0; }
+h2 { font-size: 1rem; margin: 0 0 10px; color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+
+/* ヘッダー */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .spacer { flex: 1; }
+.header-actions { display: flex; gap: 8px; }
+
+/* ボタン */
+.btn {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover { background: #f9fafb; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-ghost { background: transparent; border-color: transparent; color: var(--muted); }
+.btn-ghost:hover { background: #e5e7eb; color: var(--text); }
+.btn-danger { color: var(--danger); }
+.btn-sm { min-height: 34px; padding: 4px 10px; font-size: .9rem; }
+.btn-icon { min-width: 40px; padding: 4px 8px; }
+
+/* 2カラム */
+.app {
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) 1fr;
+  gap: 16px;
+  padding: 16px;
+  align-items: start;
+}
+.panel { display: flex; flex-direction: column; gap: 14px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.field > span { font-size: .85rem; color: var(--muted); }
+.field-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.field-row .field { flex: 1 1 100px; }
+input[type="text"], input[type="number"], select, textarea {
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  width: 100%;
+}
+textarea { min-height: 140px; resize: vertical; }
+input[type="range"] { width: 100%; }
+fieldset { border: 0; padding: 0; margin: 0 0 10px; }
+fieldset legend { font-size: .85rem; color: var(--muted); padding: 0; margin-bottom: 4px; }
+.radio-group { display: flex; flex-wrap: wrap; gap: 6px; }
+.radio-group label {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 40px; padding: 4px 12px;
+  border: 1px solid var(--line); border-radius: 8px; cursor: pointer;
+}
+.radio-group label:has(input:checked) { border-color: var(--accent); background: #eff6ff; }
+.radio-group input { margin: 0; }
+.note { font-size: .85rem; color: var(--muted); margin: 6px 0 0; }
+.banner { padding: 10px 12px; border-radius: 8px; margin: 10px 0; }
+.banner-error { background: #fee2e2; color: #991b1b; }
+.hint-box { margin-top: 10px; padding: 10px 12px; border-radius: 8px; background: #eff6ff; color: #1e3a8a; font-size: .85rem; line-height: 1.5; }
+
+/* 商品リスト */
+.items-head, .item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 90px 50px 150px;
+  grid-template-areas: "name model price copies ops" "comment comment comment comment comment";
+  gap: 4px 6px;
+  align-items: center;
+}
+.items-head { grid-template-areas: "name model price copies ops"; font-size: .8rem; color: var(--muted); font-weight: 600; padding: 0 4px 2px; }
+.item { padding: 6px 0; border-bottom: 1px solid #eceef1; }
+.item:last-child { border-bottom: 0; }
+.item input { min-width: 0; min-height: 40px; padding: 4px 8px; }
+.item input[type="number"] { padding: 4px 2px; text-align: center; }
+.item .in-name { grid-area: name; } .item .in-model { grid-area: model; } .item .in-price { grid-area: price; }
+.item .in-copies { grid-area: copies; } .item .in-comment { grid-area: comment; }
+.item .ops { grid-area: ops; display: flex; gap: 2px; justify-content: flex-end; }
+.item label { display: block; min-width: 0; }
+.item label > span { display: none; font-size: .72rem; color: var(--muted); }
+
+/* フォント */
+.font-sample {
+  font-family: var(--pop-font);
+  font-size: 1.8rem;
+  line-height: 1.3;
+  padding: 8px 10px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  margin: 8px 0;
+  min-height: 56px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.font-list { display: flex; flex-direction: column; gap: 8px; max-height: 60vh; overflow: auto; }
+.font-list button {
+  text-align: left; padding: 8px 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer;
+}
+.font-list button .fname { font-size: .8rem; color: var(--muted); font-family: var(--ui-font); }
+.font-list button .fsample { font-size: 1.6rem; line-height: 1.3; }
+.font-list button.selected { border-color: var(--accent); background: #eff6ff; }
+
+/* プレビュー */
+.preview-area { min-width: 0; }
+.preview-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; color: var(--muted); font-size: .9rem; flex-wrap: wrap; }
+.editing-hint { color: var(--accent); font-weight: 600; }
+#preview { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+.sheet-wrap { position: relative; box-shadow: 0 2px 10px rgba(0,0,0,.18); background: #fff; }
+.sheet {
+  position: absolute; top: 0; left: 0;
+  transform-origin: top left;
+  background: #fff;
+  display: grid;
+  box-sizing: border-box;
+  font-family: var(--pop-font);
+  overflow: hidden;
+}
+.pop { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+.pop.cut { outline: 0.25mm dashed #b0b0b0; outline-offset: -0.125mm; }
+.pop .bg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; user-select: none; }
+.pop .f {
+  position: absolute;
+  display: flex; align-items: center;
+  min-width: 0; min-height: 0; overflow: hidden;
+  padding: 0 1mm;
+  line-height: 1.15;
+  color: var(--guide-color);
+  box-sizing: border-box;
+}
+.pop .f-name, .pop .f-model, .pop .f-price, .pop .f-priceTax { white-space: nowrap; }
+.pop .f-comment { overflow-wrap: anywhere; white-space: pre-wrap; }
+.pop .f span { display: block; width: 100%; }
+.pop .f.al-left span { text-align: left; }
+.pop .f.al-center span { text-align: center; }
+.pop .f.al-right span { text-align: right; }
+.sheet.guide-outline .f span {
+  color: transparent;
+  -webkit-text-stroke: var(--stroke-w) var(--guide-color);
+}
+/* 編集中: 枠を見せてドラッグできるように */
+#preview.editing .sheet, #preview.editing .pop { overflow: visible; }
+#preview.editing .f { outline: 2px dashed rgba(37,99,235,.7); outline-offset: -1px; cursor: move; touch-action: none; }
+#preview.editing .f:hover { background: rgba(37,99,235,.06); }
+#preview.editing .f::before {
+  content: attr(data-field); position: absolute; left: 0; top: 0;
+  font: 600 11px var(--ui-font); color: #fff; background: rgba(37,99,235,.85);
+  padding: 0 4px; line-height: 14px; pointer-events: none;
+}
+#preview.editing .f::after {
+  content: ''; position: absolute; right: 0; bottom: 0; width: 16px; height: 16px;
+  background: linear-gradient(135deg, transparent 50%, rgba(37,99,235,.9) 50%); cursor: nwse-resize;
+}
+
+/* ダイアログ */
+dialog {
+  border: 0; border-radius: 12px; padding: 18px 20px;
+  width: min(560px, calc(100vw - 32px));
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+dialog::backdrop { background: rgba(0,0,0,.35); }
+dialog h3 { margin: 0 0 10px; font-size: 1.05rem; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.share-url { width: 100%; font-size: .8rem; word-break: break-all; }
+.qr-box { display: flex; justify-content: center; margin: 12px 0; }
+.qr-box img, .qr-box svg { width: 220px; height: 220px; image-rendering: pixelated; }
+.help-body h4 { margin: 14px 0 4px; font-size: .95rem; }
+.help-body ol, .help-body ul { margin: 4px 0; padding-left: 20px; }
+pre.json { background: #f3f4f6; padding: 10px; border-radius: 8px; font-size: .78rem; max-height: 40vh; overflow: auto; }
+
+/* 編集フォーム */
+.field-editor-row { display: grid; grid-template-columns: 1.4fr repeat(5, 1fr) 1.1fr 1.4fr; gap: 4px; align-items: end; margin-bottom: 6px; }
+.field-editor-row label { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.field-editor-row label > span { font-size: .7rem; color: var(--muted); white-space: nowrap; }
+.field-editor-row .fe-on { flex-direction: row; align-items: center; gap: 4px; font-size: .85rem; padding-bottom: 8px; }
+.field-editor-row input, .field-editor-row select { min-height: 34px; padding: 2px 4px; font-size: .85rem; }
+.field-editor-row input[type="checkbox"] { width: 18px; height: 18px; min-height: 0; }
+@media (max-width: 640px) {
+  .field-editor-row { grid-template-columns: repeat(4, 1fr); }
+  .field-editor-row .fe-on { grid-column: 1 / -1; }
+}
+details > summary { cursor: pointer; font-weight: 600; margin: 6px 0 10px; }
+.editor-disabled { opacity: .55; pointer-events: none; }
+
+/* スマホ・タブレット: 縦積み */
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; padding: 12px; }
+  .site-header { padding: 8px 12px; }
+  h1 { font-size: 1.05rem; }
+}
+@media (max-width: 520px) {
+  .items-head { display: none; }
+  .items-head, .item {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "name model" "price copies" "comment comment" "ops ops";
+  }
+  .item label > span { display: block; }
+  .item { padding: 8px 0 10px; }
+}
+}

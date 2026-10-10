@@ -1,0 +1,9 @@
+[
+  { "id": "yomogi",            "name": "Yomogi（ほんわかペン字）",          "file": "yomogi.woff2" },
+  { "id": "zen-kurenaido",     "name": "Zen Kurenaido（細めペン字）",       "file": "zen-kurenaido.woff2" },
+  { "id": "klee-one",          "name": "Klee One（教科書体風ペン字）",      "file": "klee-one.woff2" },
+  { "id": "klee-one-semibold", "name": "Klee One 太め",                     "file": "klee-one-semibold.woff2" },
+  { "id": "yusei-magic",       "name": "Yusei Magic（マーカー風・太字）",   "file": "yusei-magic.woff2" },
+  { "id": "hachi-maru-pop",    "name": "Hachi Maru Pop（丸文字ポップ）",    "file": "hachi-maru-pop.woff2" },
+  { "id": "yuji-syuku",        "name": "Yuji Syuku（筆文字）",              "file": "yuji-syuku.woff2" }
+]
