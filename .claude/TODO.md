@@ -4,9 +4,10 @@
 
 - v2 実装完了: 台紙画像（端末保存）＋項目の自由配置（ドラッグ）＋税込自動計算＋パック共有
 - ヘッドレス Chrome で確認済み: 行入力 → 台紙登録 → ドラッグ → PDF（A4）、パック保存 → 別端末で取り込み、共有URL、旧形式の移行、スマホ幅
-- **未コミット**（git init 済み、コミットは管理人の指示待ち）
+- 2026-10-10 デプロイ済み: GitHub `moonlight625/njm_make_pop`（public）、Pages は main / root、カスタムドメイン `pop.mnlight.dev` 設定済み
+- **Cloudflare DNS は管理人作業（未）**: `pop` の CNAME → `moonlight625.github.io`、プロキシOFF（DNS only）。shift-tools / pc-tools と同じ
+  DNS 反映後、GitHub 側で証明書が発行されたら `gh api -X PUT repos/moonlight625/njm_make_pop/pages -F https_enforced=true` で HTTPS 強制
 - プロジェクト直下に管理人の現物写真 `IMG_2554.HEIC` / `IMG_2555.HEIC` がある（gitignore 済み。会社ロゴ入りなのでコミット厳禁）
-- GitHub リポジトリ作成・Pages 有効化・Cloudflare DNS（`pop` CNAME → `moonlight625.github.io`）は未実施（管理人作業）
 
 ## 次やること
 
@@ -14,7 +15,7 @@
 2. 本物の台紙を使いたい場合: Mighty POP から画像化（PDF 出力 → PNG、またはスキャン）→ 複製 → 画像を選ぶ → ドラッグで位置合わせ
 3. 薄さの初期値（80）と、赤ガイドの見え方（ピンクが薄すぎ/濃すぎ）を実機で調整
 4. iPhone/iPad Safari で印刷→PDF保存を確認
-5. 問題なければコミット → GitHub → Pages → DNS
+5. Cloudflare に `pop` の CNAME を追加 → https://pop.mnlight.dev で開けることを確認 → HTTPS 強制を ON
 
 ## 候補（必要になったら）
 
