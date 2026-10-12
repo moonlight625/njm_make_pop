@@ -5,10 +5,12 @@ export const PAPERS = {
   A4: [210, 297], A5: [148, 210], A3: [297, 420],
   B5: [182, 257], B4: [257, 364],
   hagaki: [100, 148],
+  tanzakuS: [130, 385], tanzakuM: [190, 530],
   custom: null,
 };
 export const PAPER_NAMES = {
-  A4: 'A4', A5: 'A5', A3: 'A3', B5: 'B5', B4: 'B4', hagaki: 'ハガキ', custom: 'カスタム寸法',
+  A4: 'A4', A5: 'A5', A3: 'A3', B5: 'B5', B4: 'B4', hagaki: 'ハガキ',
+  tanzakuS: 'エアコン短冊小', tanzakuM: 'エアコン短冊中', custom: 'カスタム寸法',
 };
 
 // なぞり項目。順番は編集UIの並び順
